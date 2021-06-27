@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.mx
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, gradle, h2, http-client, java, java-application, junit, logback, lombok, openapi, readme, shade, tomcat-server, yaml]

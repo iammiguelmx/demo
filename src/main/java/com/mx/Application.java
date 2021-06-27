@@ -5,10 +5,12 @@ import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.info.*;
 
 @OpenAPIDefinition(
-    info = @Info(
-            title = "demo",
-            version = "0.0"
-    )
+        info = @Info(
+                title = "demo",
+                version = "0.0",
+                description = "My API",
+                license = @License(name = "Apache 2.0", url = "http://foo.bar")
+        )
 )
 public class Application {
 

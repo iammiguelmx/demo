@@ -4,15 +4,12 @@ import com.mx.model.SpaceShip;
 import com.mx.repository.SpaceShipRepository;
 import com.sun.istack.Nullable;
 import io.micronaut.http.annotation.*;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
-
 import java.util.Optional;
 
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller(value="/spaceship")
 @RequiredArgsConstructor
 public class SpaceShipController {
@@ -20,16 +17,6 @@ public class SpaceShipController {
     private final SpaceShipRepository repository;
 
     @Get("/gimme")
-    @Operation(summary = "Greets a person",
-            description = "A friendly greeting is returned"
-    )
-    @ApiResponse(
-            content = @Content(mediaType = "text/plain",
-                    schema = @Schema(type="string"))
-    )
-    @ApiResponse(responseCode = "400", description = "Invalid Name Supplied")
-    @ApiResponse(responseCode = "404", description = "Person not found")
-    @Tag(name = "gimme")
     public Iterable<SpaceShip> gimme(){
         return repository.findAll();
     }
